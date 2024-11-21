@@ -2,7 +2,7 @@ package rps
 
 import (
 	"bufio"
-	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/model"
+	"github.com/witnsby/web3_offline_coding_test/src/pkg/model"
 	"os"
 )
 
@@ -24,6 +24,5 @@ func PlayPvP() {
 
 	getYourChoice()
 	responses.Player2 = getPlayerChoice(reader, choices)
-
 	getWinner(responses)
 }

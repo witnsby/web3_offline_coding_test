@@ -3,8 +3,8 @@ package cli
 import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
-	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/helper"
-	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/rps"
+	"github.com/witnsby/web3_offline_coding_test/src/pkg/helper"
+	"github.com/witnsby/web3_offline_coding_test/src/pkg/rps"
 )
 
 func init() {
