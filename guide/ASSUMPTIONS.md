@@ -9,7 +9,7 @@
 - **[CONTRACT_LOGIC](./CONTRACT_LOGIC.md)**: Explains the Solidity smart contract logic deployed on the blockchain.
 - **[TESTS](./TESTS.md)**: Provides information about the testing strategy, test coverage, and commands for running tests.
 - **[ASSUMPTIONS](./ASSUMPTIONS.md)**: Outlines the assumptions made during the development of the application.
----
+
 
 
 The development of this application is based on the following assumptions:

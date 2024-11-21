@@ -258,8 +258,10 @@ func choiceToUint(choice string) uint8 {
 		return 2 // Assuming "paper" corresponds to 2
 	case "scissors":
 		return 3 // Assuming "scissors" corresponds to 3
+	default:
+		fmt.Println("Invalid choice")
+		return 0 // Returning 0 to indicate an invalid choice
 	}
-	return 1
 }
 
 // getYourChoice prompts the player".

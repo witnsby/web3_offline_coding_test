@@ -9,6 +9,7 @@
 - **[CONTRACT_LOGIC](./CONTRACT_LOGIC.md)**: Explains the Solidity smart contract logic deployed on the blockchain.
 - **[TESTS](./TESTS.md)**: Provides information about the testing strategy, test coverage, and commands for running tests.
 - **[ASSUMPTIONS](./ASSUMPTIONS.md)**: Outlines the assumptions made during the development of the application.
+
 ---
 
 The **RockPaperScissors** smart contract is designed to record the results of Rock-Paper-Scissors games on the blockchain. It ensures transparency, immutability, and accessibility of game outcomes. Below is an overview of its components and functionality:
