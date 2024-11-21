@@ -18,11 +18,6 @@ import (
 )
 
 const (
-	privateKeyHex = "f900ea7717dd77d38fecce3a8a48299bd4206f96e509942452a90074bd977746" // Replace with your private key (ensure this is secure)
-	//abiJSON         = `[
-	//	{"constant":true,"inputs":[],"name":"getGameCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},
-	//	{"constant":false,"inputs":[{"name":"_player1","type":"address"},{"name":"_player2","type":"address"},{"name":"_player1Choice","type":"uint8"},{"name":"_player2Choice","type":"uint8"},{"name":"_result","type":"uint8"}],"name":"addGameResult","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}
-	//]`
 	abiJSON = `[
 {"inputs":[{"internalType":"address","name":"_player1","type":"address"},{"internalType":"address","name":"_player2","type":"address"},{"internalType":"enum RockPaperScissors.Choice","name":"_player1Choice","type":"uint8"},{"internalType":"enum RockPaperScissors.Choice","name":"_player2Choice","type":"uint8"},{"internalType":"enum RockPaperScissors.Result","name":"_result","type":"uint8"}],"name":"addGameResult","outputs":[],"stateMutability":"nonpayable","type":"function"},
 {"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"gameResults","outputs":[{"internalType":"address","name":"player1","type":"address"},{"internalType":"address","name":"player2","type":"address"},{"internalType":"enum RockPaperScissors.Choice","name":"player1Choice","type":"uint8"},{"internalType":"enum RockPaperScissors.Choice","name":"player2Choice","type":"uint8"},{"internalType":"enum RockPaperScissors.Result","name":"result","type":"uint8"},{"internalType":"uint256","name":"timestamp","type":"uint256"}],"stateMutability":"view","type":"function"},
@@ -83,7 +78,9 @@ func Run(history *model.BlockchainHistory) {
 // addGameResult adds a new game result to the smart contract by creating, signing, and sending a transaction.
 // It initializes the game result data, packs the function call, signs the transaction with the private key, and submits it to the network.
 func (h *Harmony) addGameResult(history *model.BlockchainHistory) {
-	privateKey, err := crypto.HexToECDSA(privateKeyHex)
+	envVariable := helper.GetEnvVariable()
+
+	privateKey, err := crypto.HexToECDSA(envVariable.PrivateKeyHex)
 	if err != nil {
 		logrus.Fatalf("Failed to parse private key: %v", err)
 	}

@@ -28,3 +28,7 @@ type BlockchainHistory struct {
 	Player2Choice        uint8
 	ResultValue          uint8
 }
+
+type EnvironmentVariables struct {
+	PrivateKeyHex string
+}
