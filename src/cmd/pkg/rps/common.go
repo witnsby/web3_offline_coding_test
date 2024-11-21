@@ -160,7 +160,7 @@ func getBotChoice(choices []string) string {
 func getHarmonyData() (map[string]interface{}, error) {
 	payload := newPayload()
 
-	req, _ := http.NewRequest("POST", helper.HarmonyTestnetEndpoint, payload.payload)
+	req, _ := http.NewRequest("POST", helper.harmonyRPCUrl, payload.payload)
 	req.Header.Add("Content-Type", "application/json")
 
 	res, err := http.DefaultClient.Do(req)
