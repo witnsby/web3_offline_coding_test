@@ -24,6 +24,5 @@ func PlayPvP() {
 
 	getYourChoice()
 	responses.Player2 = getPlayerChoice(reader, choices)
-
 	getWinner(responses)
 }

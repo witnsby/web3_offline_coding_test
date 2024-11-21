@@ -73,16 +73,16 @@ func InitResults() *model.BlockchainHistory {
 	}
 }
 
-func Run() {
+func Run(history *model.BlockchainHistory) {
 	clientHarmony := initClientAndABI()
 	clientHarmony.verifyContractDeployment()
 
-	clientHarmony.addGameResult()
+	clientHarmony.addGameResult(history)
 }
 
 // addGameResult adds a new game result to the smart contract by creating, signing, and sending a transaction.
 // It initializes the game result data, packs the function call, signs the transaction with the private key, and submits it to the network.
-func (h *Harmony) addGameResult() {
+func (h *Harmony) addGameResult(history *model.BlockchainHistory) {
 	privateKey, err := crypto.HexToECDSA(privateKeyHex)
 	if err != nil {
 		logrus.Fatalf("Failed to parse private key: %v", err)
@@ -99,9 +99,9 @@ func (h *Harmony) addGameResult() {
 	}
 
 	result := InitResults()
-	result.Player1Choice = uint8(2)
-	result.Player2Choice = uint8(0)
-	result.ResultValue = uint8(1)
+	result.Player1Choice = history.Player1Choice
+	result.Player2Choice = history.Player2Choice
+	result.ResultValue = history.ResultValue
 
 	addGameData, err := h.abi.Pack("addGameResult", result.Player1, result.Player2, result.Player1Choice, result.Player2Choice, result.ResultValue)
 	if err != nil {
@@ -134,7 +134,7 @@ func getFromAddress(privateKey *ecdsa.PrivateKey) common.Address {
 	publicKey := privateKey.Public()
 	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
 	if !ok {
-		log.Fatalf("Failed to cast public key to ECDSA")
+		logrus.Warning("Failed to cast public key to ECDSA")
 	}
 	return crypto.PubkeyToAddress(*publicKeyECDSA)
 }

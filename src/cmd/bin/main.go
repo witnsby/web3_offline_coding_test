@@ -1,10 +1,9 @@
 package main
 
 import (
-	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/blockchain"
+	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/cli"
 )
 
 func main() {
-
-	blockchain.Run()
+	cli.Run()
 }

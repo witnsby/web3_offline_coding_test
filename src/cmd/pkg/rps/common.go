@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/sirupsen/logrus"
+	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/blockchain"
 	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/helper"
 	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/model"
 	"math/big"
@@ -133,16 +134,20 @@ func isValidChoice(choice string, choices *model.Choices) bool {
 }
 
 // determineWinner determines the outcome of a game round based on the choices of player 1 and player 2.
-func determineWinner(p1, p2 string) string {
+func determineWinner(p1, p2 string, history *model.BlockchainHistory) string {
+
 	if p1 == p2 {
+		history.ResultValue = uint8(0)
 		return helper.WonTie
 	}
 
 	winningCases := newWinningCases()
 
 	if winningCases.Options[p1] == p2 {
+		history.ResultValue = uint8(1)
 		return helper.WonPlayer1
 	} else {
+		history.ResultValue = uint8(2)
 		return helper.WonPlayer2
 	}
 }
@@ -160,7 +165,7 @@ func getBotChoice(choices []string) string {
 func getHarmonyData() (map[string]interface{}, error) {
 	payload := newPayload()
 
-	req, _ := http.NewRequest("POST", helper.harmonyRPCUrl, payload.payload)
+	req, _ := http.NewRequest("POST", helper.HarmonyRPCUrl, payload.payload)
 	req.Header.Add("Content-Type", "application/json")
 
 	res, err := http.DefaultClient.Do(req)
@@ -224,9 +229,15 @@ func getBotChoiceHarmonyVRF(choices []string) string {
 // getWinner determines the winner.
 // It uses the determineWinner function to evaluate the result and prints the winner.
 func getWinner(responses Responses) {
+
+	history := blockchain.InitResults()
+
 	first := responses.GetFirst()
+	history.Player1Choice = choiceToUint(first)
 	second := responses.GetSecond()
-	winner := determineWinner(first, second)
+	history.Player1Choice = choiceToUint(second)
+
+	winner := determineWinner(first, second, history)
 
 	fmt.Printf("%s\n%s response: %s\n%s response: %s\n",
 		winner,
@@ -235,6 +246,22 @@ func getWinner(responses Responses) {
 		responses.GetSecondName(),
 		second,
 	)
+
+	blockchain.Run(history)
+}
+
+func choiceToUint(choice string) uint8 {
+	switch fmt.Sprintf("%s", choice) { // Assuming choice.String holds the player's choice as a string
+	case "rock":
+		return 1 // Assuming "rock" corresponds to 1
+	case "paper":
+		return 2 // Assuming "paper" corresponds to 2
+	case "scissors":
+		return 3 // Assuming "scissors" corresponds to 3
+	default:
+		fmt.Println("Invalid choice")
+		return 0 // Returning 0 to indicate an invalid choice
+	}
 }
 
 // getYourChoice prompts the player".
