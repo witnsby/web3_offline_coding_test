@@ -1,0 +1,55 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Executable files
+*.out
+
+# Build and test binaries
+/build/
+/bin/
+/cmd/
+
+/*.exe
+/*.out
+
+# Vendor directory (for vendored dependencies)
+vendor/
+
+# Test logs and coverage
+*.test
+*.log
+*.coverprofile
+*.prof
+
+# IDE/editor directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+*~
+.DS_Store
+
+# Go build cache and directories
+*.mod
+*.sum
+*.db
+*.lock
+/go.sum
+/go.mod
+
+# Debugging
+*.debug
+
+# Package control
+*.snap
+
+# OS files
+Thumbs.db
+
+# Other development environment-specific files
+.env
+.env.*
