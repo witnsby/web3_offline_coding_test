@@ -3,12 +3,12 @@
 ---
 ## Annotation:
 
-- **[MAIN](./README.md)**: The main documentation file providing an overview of the project.
-- **[DELIVERED_FUNCTIONALITY](./guide/DELIVERED_FUNCTIONALITY.md)**: Details the core functionalities delivered by the application.
-- **[HOW_TO_RUN](./guide/HOW_TO_RUN.md)**: Step-by-step instructions for setting up and running the application.
-- **[CONTRACT_LOGIC](./guide/CONTRACT_LOGIC.md)**: Explains the Solidity smart contract logic deployed on the blockchain.
-- **[TESTS](./guide/TESTS.md)**: Provides information about the testing strategy, test coverage, and commands for running tests.
-- **[ASSUMPTIONS](./guide/ASSUMPTIONS.md)**: Outlines the assumptions made during the development of the application.
+- **[MAIN](../README.md)**: The main documentation file providing an overview of the project.
+- **[DELIVERED_FUNCTIONALITY](./DELIVERED_FUNCTIONALITY.md)**: Details the core functionalities delivered by the application.
+- **[HOW_TO_RUN](./HOW_TO_RUN.md)**: Step-by-step instructions for setting up and running the application.
+- **[CONTRACT_LOGIC](./CONTRACT_LOGIC.md)**: Explains the Solidity smart contract logic deployed on the blockchain.
+- **[TESTS](./TESTS.md)**: Provides information about the testing strategy, test coverage, and commands for running tests.
+- **[ASSUMPTIONS](./ASSUMPTIONS.md)**: Outlines the assumptions made during the development of the application.
 ---
 
 The application includes comprehensive tests to ensure reliability and correctness. These tests cover:
