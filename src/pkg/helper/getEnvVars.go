@@ -9,7 +9,7 @@ import (
 func GetEnvVariable() *model.EnvironmentVariables {
 	privateKeyHex, ok := os.LookupEnv("PRIVATEKEYHEX")
 	if !ok {
-		logrus.Fatal("Private Key Hex should be added to Environment as PRIVATEKEYHEX")
+		logrus.Warning("Private Key Hex should be added to Environment as PRIVATEKEYHEX")
 	}
 
 	return &model.EnvironmentVariables{
