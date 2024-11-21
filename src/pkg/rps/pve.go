@@ -2,7 +2,7 @@ package rps
 
 import (
 	"bufio"
-	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/model"
+	"github.com/witnsby/web3_offline_coding_test/src/pkg/model"
 	"os"
 )
 

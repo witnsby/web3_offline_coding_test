@@ -2,7 +2,7 @@ package rps
 
 import (
 	"github.com/stretchr/testify/assert"
-	"github.com/witnsby/web3_offline_coding_test/src/cmd/pkg/model"
+	"github.com/witnsby/web3_offline_coding_test/src/pkg/model"
 	"testing"
 )
 
